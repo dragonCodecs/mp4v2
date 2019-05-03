@@ -311,7 +311,7 @@ ChapterUtility::actionEvery( JobContext& job )
     {
         MP4Chapter_t chap;
         chap.duration = refTrackDuration.duration > chapterDuration.duration ? chapterDuration.duration : refTrackDuration.duration;
-        sprintf(chap.title, "Chapter %lu", (unsigned long)chapters.size()+1);
+        sprintf(chap.title, "Chapter %zu", chapters.size()+1);
 
         chapters.push_back( chap );
         refTrackDuration -= chapterDuration;
