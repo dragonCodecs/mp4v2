@@ -81,6 +81,10 @@ public:
                const MP4IOCallbacks*  callbacks,
                void*                  handle );
 
+    void Create( const char            *fileName,
+                 const MP4FileProvider *fileProvider,
+                 uint32_t              flags );
+
     void Create( const char*           fileName,
                  const MP4IOCallbacks* callbacks,
                  void*                 handle,

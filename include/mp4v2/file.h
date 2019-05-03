@@ -132,6 +132,11 @@ MP4FileHandle MP4Create(
     const char* fileName,
     uint32_t    flags DEFAULT(0) );
 
+MP4V2_EXPORT
+MP4FileHandle MP4CreateProvider(
+	const char *fileName, const MP4FileProvider *fileProvider,
+	uint32_t verbosity DEFAULT(0), uint32_t flags DEFAULT(0));
+
 /** Create a new mp4 file with extended options.
  *
  *  MP4CreateEx is an extended version of MP4Create().

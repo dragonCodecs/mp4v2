@@ -138,6 +138,28 @@ void MP4File::Create( const char*           fileName,
     }
 }
 
+void MP4File::Create( const char            *fileName,
+                      const MP4FileProvider *provider,
+                      uint32_t              flags )
+{
+    m_createFlags = flags;
+    Open(fileName, File::MODE_CREATE, provider);
+
+    // generate a skeletal atom tree
+    m_pRootAtom = MP4Atom::CreateAtom(*this, NULL, NULL);
+    m_pRootAtom->Generate();
+
+    MakeFtypAtom(NULL, 0, NULL, 0);
+    CacheProperties();
+
+    // create mdat, and insert it after ftyp, and before moov
+    (void)InsertChildAtom(m_pRootAtom, "mdat", 1);
+
+    // start writing
+    m_pRootAtom->BeginWrite();
+    (void)AddChildAtom("moov", "iods");
+}
+
 bool MP4File::Use64Bits (const char *atomName)
 {
     uint32_t atomid = ATOMID(atomName);

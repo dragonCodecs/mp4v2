@@ -236,6 +236,22 @@ MP4FileHandle MP4CreateCallbacksEx (const MP4IOCallbacks* callbacks,
 
 ///////////////////////////////////////////////////////////////////////////////
 
+MP4FileHandle MP4CreateProvider(const char *fileName, const MP4FileProvider* fileProvider, uint32_t verbosity, uint32_t flags)
+{
+    MP4File *pFile = NULL;
+    try {
+        pFile = new MP4File();
+        pFile->Create(fileName, fileProvider, flags);
+        return (MP4FileHandle)pFile;
+    }
+    catch (Exception *e) {
+        mp4v2::impl::log.errorf(*e);
+        delete e;
+        delete pFile;
+        return MP4_INVALID_FILE_HANDLE;
+    }
+}
+
 MP4FileHandle MP4Modify(const char* fileName,
                         uint32_t flags)
 {
