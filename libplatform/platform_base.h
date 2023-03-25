@@ -18,6 +18,7 @@
 #include <cassert>
 #include <cctype>
 #include <cerrno>
+#include <cinttypes>
 #include <climits>
 #include <cmath>
 #include <cstdarg>
