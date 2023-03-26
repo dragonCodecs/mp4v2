@@ -2,9 +2,6 @@ project(
 	'MP4v2',
 	'cpp',
 	default_options: [
-		'buildtype=release',
-		'strip=true',
-		'b_lto=true',
 		'cpp_std=c++11'
 	],
 	license: 'LGPL2',
@@ -17,12 +14,12 @@ if target_machine.system() == 'windows'
 endif
 
 libraryDefs = ['-DHAVE_CONFIG_H']
-if target_machine.system() == 'windows'
-	if get_option('default_library') == 'static'
-		libraryDefs += ['-DMP4V2_USE_STATIC_LIB']
-	else
-		libraryDefs += ['-DMP4V2_EXPORTS']
-	endif
+libraryPublicDefs = []
+if get_option('default_library') == 'static'
+	libraryDefs += ['-DMP4V2_USE_STATIC_LIB']
+	libraryPublicDefs += ['-DMP4V2_USE_STATIC_LIB']
+else
+	libraryDefs += ['-DMP4V2_EXPORTS']
 endif
 
 m = cxx.find_library('m', required: false)
@@ -78,6 +75,7 @@ if get_option('default_library') == 'static'
 		cpp_args: libraryDefs,
 		dependencies: m,
 		gnu_symbol_visibility: 'inlineshidden',
+		install: true,
 	)
 else
 	libmp4v2 = shared_library(
@@ -87,12 +85,14 @@ else
 		cpp_args: libraryDefs,
 		dependencies: m,
 		gnu_symbol_visibility: 'inlineshidden',
-		version: meson.project_version()
+		version: meson.project_version(),
+		install: true,
 	)
 endif
 
 mp4v2_dep = declare_dependency(
 	link_with: libmp4v2,
+	compile_args: libraryPublicDefs,
 	dependencies: m,
 	include_directories: libmp4v2_includes,
 )
@@ -110,7 +110,8 @@ foreach utility : utils
 		utility,
 		'util/@0@.cpp'.format(utility),
 		include_directories: include_directories('include'),
-		link_with: [libmp4v2, libutil],
+		link_with: libutil,
+		dependencies: mp4v2_dep,
 		gnu_symbol_visibility: 'inlineshidden',
 		install: true,
 	)
