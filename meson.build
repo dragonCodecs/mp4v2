@@ -2,7 +2,8 @@ project(
 	'MP4v2',
 	'cpp',
 	default_options: [
-		'cpp_std=c++11'
+		'cpp_std=c++11',
+		'b_lundef=true',
 	],
 	license: 'LGPL2',
 	version: '2.1.2',
