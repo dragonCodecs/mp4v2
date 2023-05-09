@@ -1,5 +1,6 @@
 config = configuration_data()
 
+config.set('HAVE_STDIO_H', cxx.has_header('stdio.h'))
 config.set('HAVE_DLFCN_H', cxx.has_header('dlfcn.h'))
 config.set('HAVE_INTTYPES_H', cxx.has_header('inttypes.h'))
 config.set('HAVE_MEMORY_H', cxx.has_header('memory.h'))
