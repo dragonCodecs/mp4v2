@@ -17,10 +17,9 @@ endif
 libraryDefs = ['-DHAVE_CONFIG_H']
 libraryPublicDefs = []
 if get_option('default_library') == 'static'
-	libraryDefs += ['-DMP4V2_USE_STATIC_LIB']
 	libraryPublicDefs += ['-DMP4V2_USE_STATIC_LIB']
 else
-	libraryDefs += ['-DMP4V2_EXPORTS']
+	libraryDefs += ['-DDLL_EXPORT']
 endif
 
 m = cxx.find_library('m', required: false)
