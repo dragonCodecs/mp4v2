@@ -195,7 +195,7 @@ CustomFileProvider::write( const void* buffer, Size size, Size& nout )
 }
 
 bool
-CustomFileProvider::truncate( Size size )
+CustomFileProvider::truncate( Size /*size*/ )
 {
     return true;
 }
@@ -221,7 +221,7 @@ CallbacksFileProvider::CallbacksFileProvider( const MP4IOCallbacks& callbacks, v
 }
 
 bool
-CallbacksFileProvider::open( const std::string& name, Mode mode )
+CallbacksFileProvider::open( const std::string& /*name*/, Mode /*mode*/ )
 {
     return seek(0);
 }
