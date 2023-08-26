@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is David Byron.
 //  Portions created by David Byron are Copyright (C) 2009, 2010, 2011.
 //  All Rights Reserved.
@@ -233,7 +233,7 @@ Log::verbose4f( const char* format,
  */
 void
 Log::dump ( uint8_t       indent,
-            MP4LogLevel   verbosity_,
+            MP4LogLevel   /*verbosity_*/,
             const char*   format, ... )
 {
     va_list     ap;
@@ -296,7 +296,7 @@ Log::vdump( uint8_t     indent,
         return;
     }
 
-    // No callback set so log to standard out.  
+    // No callback set so log to standard out.
     if (indent > 0)
     {
         ::fprintf(stdout,"%*c",indent,' ');
@@ -365,7 +365,7 @@ Log::vprintf( MP4LogLevel       verbosity_,
         return;
     }
 
-    // No callback set so log to standard out.  
+    // No callback set so log to standard out.
     ::vfprintf(stdout,format,ap);
     ::fprintf(stdout,"\n");
 }
@@ -531,4 +531,3 @@ void MP4LogSetLevel( MP4LogLevel verbosity )
         mp4v2::impl::log.errorf( "%s: failed", __FUNCTION__ );
     }
 }
-

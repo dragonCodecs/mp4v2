@@ -34,7 +34,7 @@ namespace mp4v2 { namespace impl {
 #define _3GP_MAJOR_BRAND "3gp5"
 #define _3GP_MINOR_VERSION 0x0001
 
-void MP4File::Make3GPCompliant(const char* fileName,  char* majorBrand, uint32_t minorVersion, char** supportedBrands, uint32_t supportedBrandsCount, bool deleteIodsAtom)
+void MP4File::Make3GPCompliant(const char* /*fileName*/,  char* majorBrand, uint32_t minorVersion, char** supportedBrands, uint32_t supportedBrandsCount, bool deleteIodsAtom)
 {
     char brand[5] = "3gp5";
     char* _3gpSupportedBrands[1] = { (char*)&brand };

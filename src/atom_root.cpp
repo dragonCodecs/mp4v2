@@ -41,7 +41,7 @@ MP4RootAtom::MP4RootAtom(MP4File &file)
     ExpectChildAtom( "moof", Optional, Many );
 }
 
-void MP4RootAtom::BeginWrite(bool use64)
+void MP4RootAtom::BeginWrite(bool /*use64*/)
 {
     m_rewrite_ftyp = (MP4FtypAtom*)FindChildAtom( "ftyp" );
     if( m_rewrite_ftyp ) {
@@ -64,7 +64,7 @@ void MP4RootAtom::Write()
     // no-op
 }
 
-void MP4RootAtom::FinishWrite(bool use64)
+void MP4RootAtom::FinishWrite(bool /*use64*/)
 {
     if( m_rewrite_ftyp ) {
         const uint64_t savepos = m_File.GetPosition();

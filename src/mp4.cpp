@@ -236,7 +236,8 @@ MP4FileHandle MP4CreateCallbacksEx (const MP4IOCallbacks* callbacks,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4FileHandle MP4CreateProvider(const char *fileName, const MP4FileProvider* fileProvider, uint32_t verbosity, uint32_t flags)
+MP4FileHandle MP4CreateProvider(const char *fileName, const MP4FileProvider* fileProvider,
+    uint32_t /*verbosity*/, uint32_t flags)
 {
     MP4File *pFile = NULL;
     try {
@@ -253,7 +254,7 @@ MP4FileHandle MP4CreateProvider(const char *fileName, const MP4FileProvider* fil
 }
 
 MP4FileHandle MP4Modify(const char* fileName,
-                        uint32_t flags)
+                        uint32_t /*flags*/)
 {
     if (!fileName)
         return MP4_INVALID_FILE_HANDLE;
@@ -283,7 +284,7 @@ MP4FileHandle MP4Modify(const char* fileName,
 
 MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
                                  void* handle,
-                                 uint32_t flags)
+                                 uint32_t /*flags*/)
 {
     if (!callbacks)
         return MP4_INVALID_FILE_HANDLE;
@@ -3262,12 +3263,12 @@ MP4FileHandle MP4ModifyCallbacks(const MP4IOCallbacks* callbacks,
     }
 
     bool MP4ReferenceSample(
-        MP4FileHandle srcFile,
-        MP4TrackId srcTrackId,
-        MP4SampleId srcSampleId,
-        MP4FileHandle dstFile,
-        MP4TrackId dstTrackId,
-        MP4Duration dstSampleDuration)
+        MP4FileHandle /*srcFile*/,
+        MP4TrackId /*srcTrackId*/,
+        MP4SampleId /*srcSampleId*/,
+        MP4FileHandle /*dstFile*/,
+        MP4TrackId /*dstTrackId*/,
+        MP4Duration /*dstSampleDuration*/)
     {
         // LATER Not yet implemented
         return false;
@@ -4601,7 +4602,7 @@ bool MP4SetTrackLanguage(
 
     try {
         return ((MP4File*)hFile)->SetTrackLanguage( trackId, code );
-    }   
+    }
     catch( Exception* x ) {
         mp4v2::impl::log.errorf(*x);
         delete x;
@@ -4665,7 +4666,7 @@ bool MP4SetTrackName(
 
 bool MP4GetTrackDurationPerChunk(
     MP4FileHandle hFile,
-    MP4TrackId    trackId, 
+    MP4TrackId    trackId,
     MP4Duration*  duration )
 {
     if( !MP4_IS_VALID_FILE_HANDLE( hFile ))

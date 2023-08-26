@@ -277,7 +277,7 @@ void MP4Track::ReadSample(
     MP4Duration*  pDuration,
     MP4Duration*  pRenderingOffset,
     bool*         pIsSyncSample,
-    bool*         hasDependencyFlags, 
+    bool*         hasDependencyFlags,
     uint32_t*     dependencyFlags )
 {
     if( sampleId == MP4_INVALID_SAMPLE_ID )
@@ -433,7 +433,7 @@ void MP4Track::WriteSample(
         duration = GetFixedSampleDuration();
     }
 
-    log.verbose3f("\"%s\": duration %" PRIu64, GetFile().GetFilename().c_str(), 
+    log.verbose3f("\"%s\": duration %" PRIu64, GetFile().GetFilename().c_str(),
                   duration);
 
     if ((m_isAmr == AMR_TRUE) &&
@@ -445,9 +445,9 @@ void MP4Track::WriteSample(
     // append sample bytes to chunk buffer
     if( m_sizeOfDataInChunkBuffer + numBytes > m_chunkBufferSize ) {
         m_pChunkBuffer = (uint8_t*)MP4Realloc(m_pChunkBuffer, m_chunkBufferSize + numBytes);
-        if (m_pChunkBuffer == NULL) 
-            return;	
-        
+        if (m_pChunkBuffer == NULL)
+            return;
+
         m_chunkBufferSize += numBytes;
     }
 
@@ -500,7 +500,7 @@ void MP4Track::WriteChunkBuffer()
     m_File.WriteBytes(m_pChunkBuffer, m_sizeOfDataInChunkBuffer);
 
     log.verbose3f("\"%s\": WriteChunk: track %u offset 0x%" PRIx64 " size %u (0x%x) numSamples %u",
-                  GetFile().GetFilename().c_str(), 
+                  GetFile().GetFilename().c_str(),
                   m_trackId, chunkOffset, m_sizeOfDataInChunkBuffer,
                   m_sizeOfDataInChunkBuffer, m_chunkSamples);
 
@@ -612,7 +612,7 @@ void MP4Track::FinishSdtp()
     }
 }
 
-bool MP4Track::IsChunkFull(MP4SampleId sampleId)
+bool MP4Track::IsChunkFull(MP4SampleId /*sampleId*/)
 {
     if (m_samplesPerChunk) {
         return m_chunkSamples >= m_samplesPerChunk;
@@ -941,7 +941,7 @@ File* MP4Track::GetSampleFile( MP4SampleId sampleId )
 
         const char* url = pLocationProperty->GetValue();
 
-        log.verbose3f("\"%s\": dref url = %s", GetFile().GetFilename().c_str(), 
+        log.verbose3f("\"%s\": dref url = %s", GetFile().GetFilename().c_str(),
                       url);
 
         file = (File*)-1;

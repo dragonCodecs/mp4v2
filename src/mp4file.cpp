@@ -1125,7 +1125,7 @@ void MP4File::AddTrackToIod(MP4TrackId trackId)
     pIdProperty->SetValue(trackId);
 }
 
-void MP4File::RemoveTrackFromIod(MP4TrackId trackId, bool shallHaveIods)
+void MP4File::RemoveTrackFromIod(MP4TrackId trackId, bool /*shallHaveIods*/)
 {
     MP4DescriptorProperty* pDescriptorProperty = NULL;
     if (!m_pRootAtom->FindProperty("moov.iods.esIds",(MP4Property**)&pDescriptorProperty)
@@ -2132,7 +2132,7 @@ void MP4File::AddH264PictureParameterSet (MP4TrackId trackId,
                 uint32_t seqlen;
                 pUnit->GetValue(&seq, &seqlen, index);
                 if (memcmp(seq, pPict, pictLen) == 0) {
-                    log.verbose1f("\"%s\": picture matches %d", 
+                    log.verbose1f("\"%s\": picture matches %d",
                                   GetFilename().c_str(), index);
                     free(seq);
                     return;
@@ -3166,7 +3166,7 @@ void MP4File::WriteSample(
 
 void MP4File::WriteSampleDependency(
     MP4TrackId     trackId,
-    const uint8_t* pBytes, 
+    const uint8_t* pBytes,
     uint32_t       numBytes,
     MP4Duration    duration,
     MP4Duration    renderingOffset,
@@ -3328,7 +3328,7 @@ bool MP4File::SetTrackLanguage( MP4TrackId trackId, const char* code )
     return true;
 }
 
-    
+
 bool MP4File::GetTrackName( MP4TrackId trackId, char** name )
 {
     unsigned char *val = NULL;
@@ -3371,7 +3371,7 @@ bool MP4File::SetTrackName( MP4TrackId trackId, const char* name )
     {
         if (!AddDescendantAtoms(MakeTrackName(trackId, NULL), "udta.name"))
             return false;
-        
+
         pMetaAtom = m_pRootAtom->FindAtom(atomstring);
         if (pMetaAtom == NULL) return false;
     }
@@ -3550,7 +3550,7 @@ const char *MP4File::GetTrackMediaDataName (MP4TrackId trackId)
        return NULL;
 
     if (pAtom->GetNumberOfChildAtoms() != 1) {
-        log.errorf("%s: \"%s\": track %d has more than 1 child atoms in stsd", 
+        log.errorf("%s: \"%s\": track %d has more than 1 child atoms in stsd",
                    __FUNCTION__, GetFilename().c_str(), trackId);
         return NULL;
     }
@@ -4452,7 +4452,7 @@ void MP4File::EncAndCopySample(
 
     //if( ismacrypEncryptSampleAddHeader( ismaCryptSId, numBytes, pBytes, &encSampleLength, &encSampleData ) != 0)
     if( encfcnp( encfcnparam1, numBytes, pBytes, &encSampleLength, &encSampleData ) != 0 )
-        log.errorf("%s(%s,%s) Can't encrypt the sample and add its header %u", 
+        log.errorf("%s(%s,%s) Can't encrypt the sample and add its header %u",
                    __FUNCTION__, srcFile->GetFilename().c_str(), dstFile->GetFilename().c_str(), srcSampleId );
 
     if( hasDependencyFlags ) {

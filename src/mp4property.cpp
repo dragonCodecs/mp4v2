@@ -35,14 +35,14 @@ MP4Property::MP4Property(MP4Atom& parentAtom, const char* name)
 }
 
 bool MP4Property::FindProperty(const char* name,
-                               MP4Property** ppProperty, uint32_t* pIndex)
+                               MP4Property** ppProperty, uint32_t* /*pIndex*/)
 {
     if (name == NULL) {
         return false;
     }
 
     if (!strcasecmp(m_name, name)) {
-        log.verbose1f("\"%s\": FindProperty: matched %s", 
+        log.verbose1f("\"%s\": FindProperty: matched %s",
                       m_parentAtom.GetFile().GetFilename().c_str(), name);
         *ppProperty = this;
         return true;
@@ -140,7 +140,7 @@ void MP4IntegerProperty::DeleteValue(uint32_t index)
     }
 }
 
-void MP4IntegerProperty::IncrementValue(int32_t increment, uint32_t index)
+void MP4IntegerProperty::IncrementValue(int32_t increment, uint32_t /*index*/)
 {
     SetValue(GetValue() + increment);
 }
@@ -747,8 +747,8 @@ bool MP4TableProperty::FindProperty(const char *name,
             *pIndex = index;
         }
     }
-    
-    log.verbose1f("\"%s\": FindProperty: matched %s", 
+
+    log.verbose1f("\"%s\": FindProperty: matched %s",
                   m_parentAtom.GetFile().GetFilename().c_str(), name);
 
     // get name of table property
@@ -1085,7 +1085,7 @@ MP4LanguageCodeProperty::MP4LanguageCodeProperty( MP4Atom& parentAtom, const cha
 }
 
 void
-MP4LanguageCodeProperty::Dump( uint8_t indent, bool dumpImplicits, uint32_t index )
+MP4LanguageCodeProperty::Dump( uint8_t indent, bool /*dumpImplicits*/, uint32_t /*index*/ )
 {
     uint16_t data = 0;
 
@@ -1121,7 +1121,7 @@ MP4LanguageCodeProperty::GetValue()
 }
 
 void
-MP4LanguageCodeProperty::Read( MP4File& file, uint32_t index )
+MP4LanguageCodeProperty::Read( MP4File& file, uint32_t /*index*/ )
 {
     uint16_t data = file.ReadBits( 16 );
 
@@ -1134,7 +1134,7 @@ MP4LanguageCodeProperty::Read( MP4File& file, uint32_t index )
 }
 
 void
-MP4LanguageCodeProperty::SetCount( uint32_t count )
+MP4LanguageCodeProperty::SetCount( uint32_t /*count*/ )
 {
     // do nothing; count is always 1
 }
@@ -1146,7 +1146,7 @@ MP4LanguageCodeProperty::SetValue( bmff::LanguageCode value )
 }
 
 void
-MP4LanguageCodeProperty::Write( MP4File& file, uint32_t index )
+MP4LanguageCodeProperty::Write( MP4File& file, uint32_t /*index*/ )
 {
     uint16_t data = 0;
 
@@ -1170,7 +1170,7 @@ MP4BasicTypeProperty::MP4BasicTypeProperty( MP4Atom& parentAtom, const char* nam
 }
 
 void
-MP4BasicTypeProperty::Dump( uint8_t indent, bool dumpImplicits, uint32_t index )
+MP4BasicTypeProperty::Dump( uint8_t indent, bool /*dumpImplicits*/, uint32_t /*index*/ )
 {
     log.dump(indent, MP4_LOG_VERBOSE1, "\"%s\": %s = %s (0x%02x)",
              m_parentAtom.GetFile().GetFilename().c_str(), m_name,
@@ -1196,13 +1196,13 @@ MP4BasicTypeProperty::GetValue()
 }
 
 void
-MP4BasicTypeProperty::Read( MP4File& file, uint32_t index )
+MP4BasicTypeProperty::Read( MP4File& file, uint32_t /*index*/ )
 {
     SetValue( static_cast<itmf::BasicType>( file.ReadBits( 8 )));
 }
 
 void
-MP4BasicTypeProperty::SetCount( uint32_t count )
+MP4BasicTypeProperty::SetCount( uint32_t /*count*/ )
 {
     // do nothing; count is always 1
 }
@@ -1214,7 +1214,7 @@ MP4BasicTypeProperty::SetValue( itmf::BasicType value )
 }
 
 void
-MP4BasicTypeProperty::Write( MP4File& file, uint32_t index )
+MP4BasicTypeProperty::Write( MP4File& file, uint32_t /*index*/ )
 {
     file.WriteBits( _value, 8 );
 }
