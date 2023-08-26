@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -51,7 +51,7 @@ const itmf::EnumBasicType::Entry itmf::EnumBasicType::data[] = {
     { mp4v2::impl::itmf::BT_UPC,       "upc",       "UPC" },
     { mp4v2::impl::itmf::BT_BMP,       "bmp",       "BMP" },
 
-    { mp4v2::impl::itmf::BT_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::BT_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -187,7 +187,7 @@ const itmf::EnumGenreType::Entry itmf::EnumGenreType::data[] = {
     { mp4v2::impl::itmf::GENRE_DANCE_HALL,        "dancehall",         "Dance Hall" },
     { mp4v2::impl::itmf::GENRE_NONE,              "none",              "none" },
 
-    { mp4v2::impl::itmf::GENRE_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::GENRE_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -203,7 +203,7 @@ const itmf::EnumStikType::Entry itmf::EnumStikType::data[] = {
     { mp4v2::impl::itmf::STIK_BOOKLET,      "booklet",     "Booklet" },
     { mp4v2::impl::itmf::STIK_RINGTONE,     "ringtone",    "Ringtone" },
 
-    { mp4v2::impl::itmf::STIK_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::STIK_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -213,7 +213,7 @@ const itmf::EnumAccountType::Entry itmf::EnumAccountType::data[] = {
     { mp4v2::impl::itmf::AT_ITUNES,  "itunes",   "iTunes" },
     { mp4v2::impl::itmf::AT_AOL,     "aol",      "AOL" },
 
-    { mp4v2::impl::itmf::AT_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::AT_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -243,7 +243,7 @@ const itmf::EnumCountryCode::Entry itmf::EnumCountryCode::data[] = {
     { mp4v2::impl::itmf::CC_NZL,  "nzl",   "New Zealand" },
     { mp4v2::impl::itmf::CC_JPN,  "jpn",   "Japan" },
 
-    { mp4v2::impl::itmf::CC_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::CC_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -255,7 +255,7 @@ const itmf::EnumContentRating::Entry itmf::EnumContentRating::data[] = {
     { mp4v2::impl::itmf::CR_CLEAN,        "clean",      "Clean" },
     { mp4v2::impl::itmf::CR_EXPLICIT_OLD, "explicit",   "Explicit" },
 
-    { mp4v2::impl::itmf::CR_UNDEFINED } // must be last
+    { mp4v2::impl::itmf::CR_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -287,7 +287,7 @@ namespace {
         { BT_GIF,  "GIF89a" },
         { BT_JPEG, "\xff\xd8\xff" },
         { BT_PNG,  "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a" },
-        { BT_UNDEFINED } // must be last
+        { BT_UNDEFINED, nullptr } // must be last
     };
 }
 
