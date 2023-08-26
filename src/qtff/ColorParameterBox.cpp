@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -30,7 +30,7 @@ namespace mp4v2 { namespace impl { namespace qtff {
 namespace {
     const string BOX_CODE = "colr";
 
-    bool findColorParameterBox( MP4FileHandle file, MP4Atom& coding, MP4Atom*& colr );
+    bool findColorParameterBox(MP4Atom& coding, MP4Atom*& colr );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ ColorParameterBox::add( MP4FileHandle file, uint16_t trackIndex, const Item& ite
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* colr;
-    if( !findColorParameterBox( file, *coding, colr ))
+    if( !findColorParameterBox( *coding, colr ))
         throw new EXCEPTION("colr-box already exists");
 
     colr = MP4Atom::CreateAtom( *((MP4File *)file), coding, BOX_CODE.c_str() );
@@ -95,7 +95,7 @@ ColorParameterBox::get( MP4FileHandle file, uint16_t trackIndex, Item& item )
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* colr;
-    if( findColorParameterBox( file, *coding, colr ))
+    if( findColorParameterBox( *coding, colr ))
         throw new EXCEPTION("colr-box not found");
 
     MP4Integer16Property* primariesIndex;
@@ -174,7 +174,7 @@ ColorParameterBox::remove( MP4FileHandle file, uint16_t trackIndex )
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* colr;
-    if( findColorParameterBox( file, *coding, colr ))
+    if( findColorParameterBox( *coding, colr ))
         throw new EXCEPTION("colr-box not found");
 
     coding->DeleteChildAtom( colr );
@@ -202,7 +202,7 @@ ColorParameterBox::set( MP4FileHandle file, uint16_t trackIndex, const Item& ite
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* colr;
-    if( findColorParameterBox( file, *coding, colr ))
+    if( findColorParameterBox( *coding, colr ))
         throw new EXCEPTION("colr-box not found");
 
     MP4Integer16Property* primariesIndex;
@@ -309,7 +309,7 @@ namespace {
 ///////////////////////////////////////////////////////////////////////////////
 
 bool
-findColorParameterBox( MP4FileHandle file, MP4Atom& coding, MP4Atom*& colr )
+findColorParameterBox(MP4Atom& coding, MP4Atom*& colr )
 {
     colr = NULL;
 

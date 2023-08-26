@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -30,7 +30,7 @@ namespace mp4v2 { namespace impl { namespace qtff {
 namespace {
     const string BOX_CODE = "pasp";
 
-    bool findPictureAspectRatioBox( MP4FileHandle file, MP4Atom& coding, MP4Atom*& pasp );
+    bool findPictureAspectRatioBox(MP4Atom& coding, MP4Atom*& pasp );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ PictureAspectRatioBox::add( MP4FileHandle file, uint16_t trackIndex, const Item&
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* pasp;
-    if( !findPictureAspectRatioBox( file, *coding, pasp ))
+    if( !findPictureAspectRatioBox( *coding, pasp ))
         throw new EXCEPTION("pasp-box already exists");
 
     pasp = MP4Atom::CreateAtom( *((MP4File *)file), coding, BOX_CODE.c_str() );
@@ -87,7 +87,7 @@ PictureAspectRatioBox::get( MP4FileHandle file, uint16_t trackIndex, Item& item 
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* pasp;
-    if( findPictureAspectRatioBox( file, *coding, pasp ))
+    if( findPictureAspectRatioBox( *coding, pasp ))
         throw new EXCEPTION("pasp-box not found");
 
     MP4Integer16Property* hSpacing;
@@ -162,7 +162,7 @@ PictureAspectRatioBox::remove( MP4FileHandle file, uint16_t trackIndex )
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* pasp;
-    if( findPictureAspectRatioBox( file, *coding, pasp ))
+    if( findPictureAspectRatioBox( *coding, pasp ))
         throw new EXCEPTION("pasp-box not found");
 
     coding->DeleteChildAtom( pasp );
@@ -190,7 +190,7 @@ PictureAspectRatioBox::set( MP4FileHandle file, uint16_t trackIndex, const Item&
         throw new EXCEPTION("supported coding not found");
 
     MP4Atom* pasp;
-    if( findPictureAspectRatioBox( file, *coding, pasp ))
+    if( findPictureAspectRatioBox( *coding, pasp ))
         throw new EXCEPTION("pasp-box not found");
 
     MP4Integer16Property* hSpacing;
@@ -289,7 +289,7 @@ namespace {
 ///////////////////////////////////////////////////////////////////////////////
 
 bool
-findPictureAspectRatioBox( MP4FileHandle file, MP4Atom& coding, MP4Atom*& pasp )
+findPictureAspectRatioBox(MP4Atom& coding, MP4Atom*& pasp )
 {
     pasp = NULL;
 
