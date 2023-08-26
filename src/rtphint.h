@@ -45,7 +45,7 @@ public:
 
     MP4Track* FindTrackFromRefIndex(uint8_t refIndex);
 
-    virtual void WriteEmbeddedData(MP4File& file, uint64_t startPos) {
+    virtual void WriteEmbeddedData(MP4File& /*file*/, uint64_t /*startPos*/) {
         // default is no-op
     }
 
@@ -63,7 +63,7 @@ public:
         return 0;
     }
 
-    void GetData(uint8_t* pDest) {
+    void GetData(uint8_t* /*pDest*/) {
         // no-op
     }
 };
