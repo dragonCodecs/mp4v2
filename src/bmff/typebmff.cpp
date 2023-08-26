@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -514,7 +514,7 @@ const bmff::EnumLanguageCode::Entry bmff::EnumLanguageCode::data[] = {
     { mp4v2::impl::bmff::ILC_ZXX,  "zxx",  "No linguistic content; Not applicable" },
     { mp4v2::impl::bmff::ILC_ZZA,  "zza",  "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki" },
 
-    { mp4v2::impl::bmff::ILC_UNDEFINED } // must be last
+    { mp4v2::impl::bmff::ILC_UNDEFINED, nullptr, nullptr } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
