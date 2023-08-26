@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -111,11 +111,11 @@ Utility::batch( int argi )
             mp4v2::impl::log.errorf(*x);
             delete x;
         }
- 
+
         if( !_keepgoing && subResult == FAILURE )
             return FAILURE;
     }
-    
+
     return batchResult;
 }
 
@@ -408,7 +408,7 @@ Utility::printUsage( bool toerr )
     ostringstream oss;
     oss <<   "Usage: " << _name << " " << _usage
         << "\nTry -h for brief help or --help for extended help";
- 
+
     if( toerr )
         errf( "%s\n", oss.str().c_str() );
     else
@@ -477,7 +477,7 @@ Utility::process_impl()
 
     for( ;; ) {
         const uint32_t code = prog::getOption( _argc, _argv, _shortOptions.c_str(), _longOptions, NULL );
-        if( code == -1 )
+        if( code == UINT32_MAX )
             break;
 
         bool handled = false;
@@ -705,7 +705,7 @@ Utility::Group::add(
 ///////////////////////////////////////////////////////////////////////////////
 
 void
-Utility::Group::add( 
+Utility::Group::add(
     const string& lname,
     bool          lhasarg,
     uint32_t      lcode,

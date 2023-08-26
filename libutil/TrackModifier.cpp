@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -174,11 +174,11 @@ TrackModifier::fromString( const string& src, uint16_t& dst )
 {
     istringstream iss( src );
     iss >> dst;
-    if( iss.rdstate() != ios::eofbit ) { 
+    if( iss.rdstate() != ios::eofbit ) {
         ostringstream oss;
         oss << "invalid value: " << src;
         throw new EXCEPTION(oss.str());
-    }   
+    }
 
     return dst;
 }
@@ -407,7 +407,7 @@ TrackModifier::toString( bool value )
 ///////////////////////////////////////////////////////////////////////////////
 
 string
-TrackModifier::toString( float value, uint8_t i, uint8_t f )
+TrackModifier::toString( float value, uint8_t /*i*/, uint8_t f )
 {
     ostringstream oss;
     oss << fixed << setprecision(f <= 8 ? 4 : 8) << value;
