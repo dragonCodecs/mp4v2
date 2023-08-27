@@ -514,7 +514,7 @@ const bmff::EnumLanguageCode::Entry bmff::EnumLanguageCode::data[] = {
     { mp4v2::impl::bmff::ILC_ZXX,  "zxx",  "No linguistic content; Not applicable" },
     { mp4v2::impl::bmff::ILC_ZZA,  "zza",  "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki" },
 
-    { mp4v2::impl::bmff::ILC_UNDEFINED, nullptr, nullptr } // must be last
+    { mp4v2::impl::bmff::ILC_UNDEFINED, {}, {} } // must be last
 };
 
 ///////////////////////////////////////////////////////////////////////////////
