@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Ullrich Pollaehne.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  Portions created by David Byron are Copyright (C) 2010.
@@ -162,7 +162,7 @@ ChapterUtility::ChapterUtility( int argc, char** argv )
 
 /** Action for listing chapters from <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -215,7 +215,7 @@ ChapterUtility::actionList( JobContext& job )
 
 /** Action for converting chapters in <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -270,7 +270,7 @@ ChapterUtility::actionConvert( JobContext& job )
 
 /** Action for setting chapters every n second in <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -333,7 +333,7 @@ ChapterUtility::actionEvery( JobContext& job )
 
 /** Action for exporting chapters from the <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -486,7 +486,7 @@ ChapterUtility::actionExport( JobContext& job )
 
 /** Action for importing chapters into the <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -613,7 +613,7 @@ ChapterUtility::actionImport( JobContext& job )
 
 /** Action for removing chapters from the <b>job.file</b>
  *
- *  
+ *
  *  @param job the job to process
  *  @return mp4v2::util::SUCCESS if successful, mp4v2::util::FAILURE otherwise
  */
@@ -1100,7 +1100,7 @@ ChapterUtility::parseChapterFile( const string& filename, vector<MP4Chapter_t>& 
 
                     currentChapter = chNr;
                 }
-                formatState = FMT_STATE_TITLE_LINE == formatState ? FMT_STATE_FINISH 
+                formatState = FMT_STATE_TITLE_LINE == formatState ? FMT_STATE_FINISH
                                                                   : FMT_STATE_TIME_LINE;
 
                 timeStart = equalsPos + 1;
