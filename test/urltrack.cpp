@@ -20,9 +20,10 @@
  */
 
 #include <mp4v2/mp4v2.h>
-#include <string.h>
+#include <cstring>
+#include <algorithm>
 
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <file>\n", argv[0]);
@@ -43,13 +44,19 @@ main(int argc, char** argv)
     printf("urlTrackId %d\n", urlTrackId);
 
     uint8_t i;
-    char url[128];
 
     for (i = 1; i <= 5; i++) {
-        snprintf(url, 128, "http://server.com/foo/bar%u.html", i);
+        char url[128] = {};
+        int result = snprintf(url, 128U, "http://server.com/foo/bar%u.html", i);
+        if (result < 0) {
+            fprintf(stderr, "Failure while constructing URL %u\n", i);
+            MP4Close(mp4File);
+            return 1;
+        }
+        const size_t length = std::min<size_t>(result + 1U, 128U);
 
         MP4WriteSample(mp4File, urlTrackId,
-            (uint8_t*)url, strlen(url) + 1, (MP4Duration)i);
+            (uint8_t *)url, length, (MP4Duration)i);
     }
 
     MP4Close(mp4File);
