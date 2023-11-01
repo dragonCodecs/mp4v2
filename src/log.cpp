@@ -418,15 +418,15 @@ Log::hexDump( uint8_t           indent,
     if (format[0] || indent)
     {
         desc = (char *)MP4Calloc(256 + indent);
-        sprintf(desc,"%*c",indent,' ');
-        va_start(ap,format);
-        vsnprintf(desc + indent,255,format,ap);
+        snprintf(desc, 256 + indent, "%*c", indent, ' ');
+        va_start(ap, format);
+        vsnprintf(desc + indent, 255, format, ap);
         va_end(ap);
     }
 
     // From here we can use the C++ standard lib classes and
     // build a string for each line
-    for (uint32_t i = 0;(i < numBytes);i += 16)
+    for (uint32_t i = 0; i < numBytes; i += 16)
     {
         // ios_base::ate means at end.  With out this desc
         // gets overwritten with each << operation
@@ -439,11 +439,11 @@ Log::hexDump( uint8_t           indent,
         oneLine << ':' << hex << setw(8) << setfill('0') <<
             std::right << i << setw(0) << setfill(' ') << ": ";
 
-        uint32_t curlen = min((uint32_t)16,numBytes - i);
+        uint32_t curlen = min((uint32_t)16, numBytes - i);
         const uint8_t *b = pBytes + i;
         uint32_t j;
 
-        for (j = 0;(j < curlen);j++)
+        for (j = 0; j < curlen; j++)
         {
             oneLine << hex << setw(2) << setfill('0') << right << static_cast<uint32_t>(b[j]);
             oneLine << setw(0) << setfill(' ') << ' ';
@@ -455,7 +455,7 @@ Log::hexDump( uint8_t           indent,
         }
 
         b = pBytes + i;
-        for (j = 0;(j < curlen);j++)
+        for (j = 0; j < curlen; j++)
         {
             if (isprint(static_cast<int>(b[j])))
             {
@@ -475,7 +475,7 @@ Log::hexDump( uint8_t           indent,
         // double-check the verbosity and the callback
         // function pointer, but that seems OK (13-feb-09,
         // dbyron)
-        this->printf(verbosity_,"%s",oneLine.str().c_str());
+        this->printf(verbosity_, "%s", oneLine.str().c_str());
     }
 
     if (desc)
