@@ -46,7 +46,7 @@ main(int argc, char** argv)
     char url[128];
 
     for (i = 1; i <= 5; i++) {
-        sprintf(url, "http://server.com/foo/bar%u.html", i);
+        snprintf(url, 128, "http://server.com/foo/bar%u.html", i);
 
         MP4WriteSample(mp4File, urlTrackId,
             (uint8_t*)url, strlen(url) + 1, (MP4Duration)i);
