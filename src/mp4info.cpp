@@ -444,7 +444,8 @@ static char* PrintVideoInfo(
 
     // type duration avgBitrate frameSize frameRate
     if (foundTypeName) {
-        sprintf(sInfo,
+        snprintf(sInfo,
+                256,
                 "%u\tvideo\t%s%s, %.3f secs, %u kbps, %ux%u @ %f fps\n",
                 trackId,
                 MP4IsIsmaCrypMediaTrack(mp4File, trackId) ? "encv - " : "",
@@ -456,7 +457,8 @@ static char* PrintVideoInfo(
                 fps
                );
     } else {
-        sprintf(sInfo,
+        snprintf(sInfo,
+                256,
                 "%u\tvideo\t%s(%u), %.3f secs, %u kbps, %ux%u @ %f fps\n",
                 trackId,
                 typeName,
