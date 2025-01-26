@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -239,7 +239,7 @@ MP4V2_EXPORT extern const EnumAccountType enumAccountType;
 
 /// enumerated 32-bit Country Code used by the iTunes Store.
 /// Note values are not formally defined in any specification.
-enum CountryCode {   
+enum CountryCode {
     CC_USA   = 143441,
     CC_FRA   = 143442,
     CC_DEU   = 143443,
@@ -273,7 +273,7 @@ MP4V2_EXPORT extern const EnumCountryCode enumCountryCode;
 
 /// enumerated 8-bit Content Rating used by iTunes.
 /// Note values are not formally defined in any specification.
-enum ContentRating {   
+enum ContentRating {
     CR_NONE         = 0,
     CR_EXPLICIT     = 1,
     CR_CLEAN        = 2,

@@ -9,9 +9,9 @@
 //  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
 //  License for the specific language governing rights and limitations
 //  under the License.
-// 
+//
 //  The Original Code is MP4v2.
-// 
+//
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
 //  All Rights Reserved.
@@ -82,7 +82,7 @@ public:
     typedef map<T,const Entry*> MapToString;
 
 public:
-    static const Entry data[];
+    MP4V2_EXPORT static const Entry data[];
 
 private:
     MapToType   _mapToType;
